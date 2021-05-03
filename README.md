@@ -1,0 +1,3 @@
+# Loto
+
+Building a lottery game as a smart contract...
