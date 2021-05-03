@@ -38,5 +38,13 @@ describe("Loto", () => {
 
       await expect(token.enter(numbers, options)).to.be.revertedWith("numbers must be between 1 and 20");
     });
+
+    it("enters the draw", async () => {
+      const numbers = [1, 2, 3, 4, 5];
+      const options = {value: FEE};
+
+      await expect(token.enter(numbers, options)).not.to.be.reverted;
+      expect(await token.inCurrentCompetition(owner.address)).to.be.true;
+    });
   });
 });

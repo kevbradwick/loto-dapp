@@ -39,6 +39,19 @@ contract Loto {
         revert("number is not unique");
       }
     }
+
+    Entry memory e = Entry(numbers[0], numbers[1], numbers[2], numbers[3], numbers[4], msg.sender);
+    currentCompetition.entrants.push(e);
+  }
+
+  function inCurrentCompetition(address _player) public view returns(bool) {
+    for (uint i = 0; i < currentCompetition.entrants.length; i++) {
+      Entry memory e = currentCompetition.entrants[i];
+      if (e.player == _player) {
+        return true;
+      }
+    }
+    return false;
   }
 
   function _isUnique(uint8[] memory numbers, uint8 number) private pure returns(bool) {
